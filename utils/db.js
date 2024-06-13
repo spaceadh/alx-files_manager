@@ -14,7 +14,8 @@ class DBClient {
     const host = process.env.DB_HOST || 'localhost';
     const port = process.env.DB_PORT || 27017;
     const database = process.env.DB_DATABASE || 'files_manager';
-    const dbURL = process.env.DB_URI || `mongodb://${host}:${port}/${database}`;
+    const uri = 'mongodb+srv://spacesealadhesives13:<password>@havenwebsite.q8o1ofk.mongodb.net/?retryWrites=true&w=majority&appName=HavenWebsite'
+    const dbURL = uri|| process.env.DB_URI || `mongodb://${host}:${port}/${database}`;
 
     this.client = new MongoClient(dbURL, {
       serverApi: {
@@ -26,6 +27,7 @@ class DBClient {
       useUnifiedTopology: true,
     });
 
+    // this.client.connect();
     this.client.connect()
       .then(() => {
         this.db = this.client.db(database);

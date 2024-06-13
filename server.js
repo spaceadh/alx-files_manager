@@ -1,6 +1,6 @@
 // server.js
 import express from 'express';
-import routes from './routes';
+import injectRoutes from './routes';
 import envLoader from './utils/env_loader.js';
 
 // Load environment variables
@@ -16,8 +16,8 @@ injectMiddlewares(app);
 
 // const port = process.env.PORT || 5000;
 
-app.use(routes);
-
+// app.use(routes);
+injectRoutes(app);
 // app.listen(port, () => {
 //     console.log(`Server running on port ${port}`);
 // });
